@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Dashboard</h1>
+    <button type="button" class="btn btn-danger mb-2" (click)="logout()">Logout</button>
+    <div *ngIf="loading" style="text-align: center;">
+        <img src="assets/image/loader.gif">
+    </div>
+    <div *ngIf="!loading">
+        <table [border]="1" *ngIf="!showError" class="table table-bordered">
+            <tr>
+                <td>ID</td>
+                <td>User Id</td>
+                <td>Title</td>
+                <td>Body</td>
+            </tr>
+            <tr *ngFor="let row of listingData">
+                <td appClourChange>{{row.id}}</td>
+                <td appClourChange>{{row.userId}}</td>
+                <td appClourChange>{{row.title}}</td>
+                <td appClourChange>{{row.body}}</td>
+            </tr>
+        </table>
+        <div *ngIf="showError">
+            <p class="text-danger">Have an error, please try again. <span (click)="getFakeData()">Get Data</span></p>
+        </div>
+    </div>
+</div>

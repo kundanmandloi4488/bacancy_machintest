@@ -1,0 +1,107 @@
+<div class="container">
+    <h1>Registration Form</h1>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onFormSubmit(registrationForm.value)" novalidate>
+
+        <div class="form-group">
+            <label for="firstName">First Name: </label>
+            <input id="firstName" type="text" formControlName="firstName" class="form-control">
+
+            <span
+                *ngIf="registrationForm.controls['firstName'].invalid && (registrationForm.controls['firstName'].dirty || registrationForm.controls['firstName'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['firstName'].errors.required" class="text-danger">
+                    Please enter first name
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name: </label>
+            <input id="lastName" type="text" class="form-control" formControlName="lastName">
+            <span
+                *ngIf="registrationForm.controls['lastName'].invalid && (registrationForm.controls['lastName'].dirty || registrationForm.controls['lastName'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['lastName'].errors.required" class="text-danger">
+                    Please enter last name
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label> &nbsp;&nbsp;&nbsp;
+            <div class="form-check form-check-inline">
+                <input id="male" type="radio" value="male" name="gender" formControlName="gender" class="form-check-input">
+                <label for="male" class="form-check-label">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input id="female" type="radio" value="female" name="gender" formControlName="gender" class="form-check-input">
+                <label for="female" class="form-check-label">Female</label>
+            </div>
+            <span
+                *ngIf="registrationForm.controls['gender'].invalid && (registrationForm.controls['gender'].dirty || registrationForm.controls['gender'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['gender'].errors.required" class="text-danger">
+                    Please select gender
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="hobby">Hobby: </label>
+            <select formControlName="hobby" class="form-control">
+                <option value="Swimming">Swimming</option>
+                <option value="Cricket">Cricket</option>
+                <option value="Watching Movie">Watching Movie</option>
+            </select>
+            <span
+                *ngIf="registrationForm.controls['hobby'].invalid && (registrationForm.controls['hobby'].dirty || registrationForm.controls['hobby'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['hobby'].errors.required" class="text-danger">
+                    Please select hobby
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input id="email" type="email" formControlName="email" class="form-control">
+            <span
+                *ngIf="registrationForm.controls['email'].invalid && (registrationForm.controls['email'].dirty || registrationForm.controls['email'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['email'].errors.required" class="text-danger">
+                    Please enter email
+                </span>
+                <span *ngIf="registrationForm.controls['email'].errors.email" class="text-danger">Email is invalid</span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input id="password" type="password" formControlName="password" class="form-control">
+            <span
+                *ngIf="registrationForm.controls['password'].invalid && (registrationForm.controls['password'].dirty || registrationForm.controls['password'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['password'].errors.required" class="text-danger">
+                    Please enter password
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group">
+            <label for="cpassword">Confirm Password: </label>
+            <input id="cpassword" type="password" formControlName="cpassword" class="form-control">
+            <span
+                *ngIf="registrationForm.controls['cpassword'].invalid && (registrationForm.controls['cpassword'].dirty || registrationForm.controls['cpassword'].touched)"
+                class="alert">
+                <span *ngIf="registrationForm.controls['cpassword'].errors.required" class="text-danger">
+                    Please enter confirm password
+                </span>
+                <span *ngIf="registrationForm.controls['cpassword'].errors.confirmedValidator" class="text-danger">Password and Confirm
+                    Password must be match.</span>
+            </span>
+        </div>
+
+        <button class="btn btn-primary" type="submit" >Submit</button>
+    </form>
+</div>
